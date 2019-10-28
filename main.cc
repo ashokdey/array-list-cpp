@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cassert>
-#include "ArrayClass.cc"
+#include "ArraySafe.cc"
 
 int main(int argc, char **argv)
 {
