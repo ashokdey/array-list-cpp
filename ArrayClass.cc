@@ -6,6 +6,7 @@ private:
 
 public:
   IntArray() = default;
+
   explicit IntArray(int size)
   {
     if (size != 0)
@@ -13,6 +14,12 @@ public:
       m_ptr = new int[size]{};
       m_size = size;
     }
+  }
+
+  // free the memory utilized
+  ~IntArray()
+  {
+    delete[] m_ptr;
   }
 
   int size() const
