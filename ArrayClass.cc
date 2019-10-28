@@ -1,3 +1,5 @@
+#include "IndexException.cc"
+
 class IntArray
 {
 private:
@@ -30,5 +32,30 @@ public:
   bool isEmpty() const
   {
     return (m_size == 0);
+  }
+
+  bool isValidIndex(int index) const
+  {
+    return (index >= 0) && (index < m_size);
+  }
+
+  // provide element access using overloading
+  int &operator[](int index)
+  {
+    if (!isValidIndex(index))
+    {
+      throw ArrayIndexException(index);
+    }
+    return m_ptr[index];
+  }
+
+  // read only access to the elements
+  int operator[](int index) const
+  {
+    if (!isValidIndex(index))
+    {
+      throw ArrayIndexException(index);
+    }
+    return m_ptr[index];
   }
 };
