@@ -7,6 +7,7 @@ private:
 public:
   IntArray() = default;
   explicit IntArray(int size);
+  IntArray(const IntArray &source);
   ~IntArray();
 
   int size() const;
