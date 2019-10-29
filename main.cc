@@ -8,14 +8,15 @@ int main(int argc, char **argv)
   {
     std::cout << "Creating an empty array" << std::endl;
 
-    IntArray a{};
+    ArrayList<int> a{};
     std::cout << "Size of a = " << a.size() << std::endl;
     assert(a.isEmpty());
 
     std::cout << "---------------------------------------" << std::endl;
 
     std::cout << "Creating and array with 10 elements" << std::endl;
-    IntArray b{10};
+    ArrayList<int> b{10};
+
     std::cout << "Size of b = " << b.size() << std::endl;
     assert(!b.isEmpty());
 
@@ -33,7 +34,7 @@ int main(int argc, char **argv)
     std::cout << "\n--------------------------------" << std::endl;
     std::cout << "Creating a copy of b :" << std::endl;
     // create a copy of b in c
-    IntArray c = b;
+    ArrayList<int> c = b;
 
     std::cout << "Display the items of c :" << std::endl;
     std::cout << c << std::endl;

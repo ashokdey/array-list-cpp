@@ -1,6 +1,4 @@
-#ifndef ARRAY_LIST
-#define ARRAY_LIST
-
+#pragma once
 template <typename T>
 
 class ArrayList
@@ -14,10 +12,10 @@ public:
   explicit ArrayList(int size);
 
   // the copy constructor
-  ArrayList(const T &source);
+  ArrayList(const ArrayList &source);
 
   // the move constructor
-  ArrayList(T &&source);
+  ArrayList(ArrayList &&source);
 
   // the destructor to free memory
   ~ArrayList();
@@ -33,13 +31,12 @@ public:
   T operator[](int index) const;
 
   // implement a swap() for ArrayList
-  friend void swap(T &source, T &destination) noexcept;
+  friend void swap(ArrayList<T> &source, ArrayList<T> &destination) noexcept;
 
   // implement copy and swap idiom, overriding = operator
-  T &operator=(T &source);
+  ArrayList<T> &operator=(ArrayList<T> &source);
 
   // override the << operator to display the array
-  friend std::ostream &operator<<(std::ostream &os, const T &a);
+  template <typename U> //[https://stackoverflow.com/questions/4660123/overloading-friend-operator-for-template-class]
+  friend std::ostream &operator<<(std::ostream &os, const ArrayList<U> &a);
 };
-
-#endif

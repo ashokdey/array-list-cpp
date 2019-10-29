@@ -13,7 +13,7 @@ ArrayList<T>::ArrayList(int size)
 }
 
 template <typename T>
-ArrayList<T>::ArrayList(const T &source)
+ArrayList<T>::ArrayList(const ArrayList &source)
 {
   if (!source.isEmpty())
   {
@@ -28,7 +28,7 @@ ArrayList<T>::ArrayList(const T &source)
 }
 
 template <typename T>
-ArrayList<T>::ArrayList(T &&source)
+ArrayList<T>::ArrayList(ArrayList &&source)
 {
   // transfer owenership from the source
   m_size = source.m_size;
@@ -84,7 +84,7 @@ T ArrayList<T>::operator[](int index) const
 }
 
 template <typename T>
-void swap(T &source, T &destination) noexcept
+void swap(ArrayList<T> &source, ArrayList<T> &destination) noexcept
 {
   // member wise swap
   std::swap(source.m_ptr, destination.m_ptr);
@@ -92,7 +92,7 @@ void swap(T &source, T &destination) noexcept
 }
 
 template <typename T>
-T &ArrayList<T>::operator=(T &source)
+ArrayList<T> &ArrayList<T>::operator=(ArrayList<T> &source)
 {
   // Using "copy and swap idiom"
   swap(*this, source);
@@ -100,7 +100,7 @@ T &ArrayList<T>::operator=(T &source)
 }
 
 template <typename T>
-std::ostream &operator<<(std::ostream &os, const T &a)
+std::ostream &operator<<(std::ostream &os, const ArrayList<T> &a)
 {
   os << "[ ";
   for (int i = 0; i < a.size(); i += 1)
