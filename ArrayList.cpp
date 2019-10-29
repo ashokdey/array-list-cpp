@@ -1,23 +1,25 @@
 #include <iostream>
-#include "ArraySafe.h"
+#include "ArrayList.hpp"
 #include "IndexException.cc"
 
-IntArray::IntArray(int size)
+template <typename T>
+ArrayList<T>::ArrayList(int size)
 {
   if (size != 0)
   {
-    m_ptr = new int[size]{};
+    m_ptr = new T[size]{};
     m_size = size;
   }
 }
 
-IntArray::IntArray(const IntArray &source)
+template <typename T>
+ArrayList<T>::ArrayList(const T &source)
 {
   if (!source.isEmpty())
   {
     m_size = source.m_size;
 
-    m_ptr = new int[m_size];
+    m_ptr = new T[m_size];
     for (int i = 0; i < m_size; i += 1)
     {
       m_ptr[i] = source.m_ptr[i];
@@ -25,7 +27,8 @@ IntArray::IntArray(const IntArray &source)
   }
 }
 
-IntArray::IntArray(IntArray &&source)
+template <typename T>
+ArrayList<T>::ArrayList(T &&source)
 {
   // transfer owenership from the source
   m_size = source.m_size;
@@ -36,27 +39,32 @@ IntArray::IntArray(IntArray &&source)
   source.m_size = 0;
 }
 
-IntArray::~IntArray()
+template <typename T>
+ArrayList<T>::~ArrayList()
 {
   delete[] m_ptr;
 }
 
-int IntArray::size() const
+template <typename T>
+int ArrayList<T>::size() const
 {
   return m_size;
 }
 
-bool IntArray::isEmpty() const
+template <typename T>
+bool ArrayList<T>::isEmpty() const
 {
   return (m_size == 0);
 }
 
-bool IntArray::isValidIndex(int index) const
+template <typename T>
+bool ArrayList<T>::isValidIndex(int index) const
 {
   return (index >= 0) && (index < m_size);
 }
 
-int &IntArray::operator[](int index)
+template <typename T>
+T &ArrayList<T>::operator[](int index)
 {
   if (!isValidIndex(index))
   {
@@ -65,7 +73,8 @@ int &IntArray::operator[](int index)
   return m_ptr[index];
 }
 
-int IntArray::operator[](int index) const
+template <typename T>
+T ArrayList<T>::operator[](int index) const
 {
   if (!isValidIndex(index))
   {
@@ -74,21 +83,24 @@ int IntArray::operator[](int index) const
   return m_ptr[index];
 }
 
-void swap(IntArray &source, IntArray &destination) noexcept
+template <typename T>
+void swap(T &source, T &destination) noexcept
 {
   // member wise swap
   std::swap(source.m_ptr, destination.m_ptr);
   std::swap(source.m_size, destination.m_size);
 }
 
-IntArray &IntArray::operator=(IntArray &source)
+template <typename T>
+T &ArrayList<T>::operator=(T &source)
 {
   // Using "copy and swap idiom"
   swap(*this, source);
   return *this;
 }
 
-std::ostream &operator<<(std::ostream &os, const IntArray &a)
+template <typename T>
+std::ostream &operator<<(std::ostream &os, const T &a)
 {
   os << "[ ";
   for (int i = 0; i < a.size(); i += 1)

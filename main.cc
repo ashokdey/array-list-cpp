@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cassert>
-#include "ArraySafe.cc"
+#include "ArrayList.cpp"
 
 int main(int argc, char **argv)
 {
