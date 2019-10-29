@@ -1,3 +1,4 @@
+#include <iostream>
 #include "ArraySafe.h"
 #include "IndexException.cc"
 
@@ -60,6 +61,20 @@ int IntArray::operator[](int index) const
     throw ArrayIndexException(index);
   }
   return m_ptr[index];
+}
+
+void swap(IntArray &source, IntArray &destination) noexcept
+{
+  // member wise swap
+  std::swap(source.m_ptr, destination.m_ptr);
+  std::swap(source.m_size, destination.m_size);
+}
+
+IntArray &IntArray::operator=(IntArray &source)
+{
+  // Using "copy and swap idiom"
+  swap(*this, source);
+  return *this;
 }
 
 std::ostream &operator<<(std::ostream &os, const IntArray &a)
