@@ -52,7 +52,7 @@ Compilation
 
 ```bash
 # compile
-g++ -std=c++14 -Wall ./src/main.cc -o ./bin/main
+g++ -std=c++14 -Wall ./src/main.cpp -o main
 
 #execute
 ./bin/main
@@ -61,7 +61,7 @@ g++ -std=c++14 -Wall ./src/main.cc -o ./bin/main
 
 ```bash
 # compile with address sanitizer
-g++ -std=c++14 -Wall -fsanitize=address -g ./src/main.cc -o ./bin/main
+g++ -std=c++14 -Wall -fsanitize=address -g ./src/main.cpp -o main
 
 # execute to see memory leaks (if any)
 ./bin/main
