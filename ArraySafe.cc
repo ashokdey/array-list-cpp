@@ -47,3 +47,14 @@ int IntArray::operator[](int index) const
   }
   return m_ptr[index];
 }
+
+std::ostream &operator<<(std::ostream &os, const IntArray &a)
+{
+  os << "[ ";
+  for (int i = 0; i < a.size(); i += 1)
+  {
+    os << a[i] << " ";
+  }
+  os << " ]";
+  return os;
+}

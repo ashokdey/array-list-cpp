@@ -16,4 +16,5 @@ public:
   int &operator[](int index);
   // read only access to the elements
   int operator[](int index) const;
+  friend std::ostream &operator<<(std::ostream &os, const IntArray &a);
 };

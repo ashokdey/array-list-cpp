@@ -21,6 +21,9 @@ int main(int argc, char **argv)
 
     b[1] = 30;
 
+    std::cout << "Cout the list" << std::endl;
+    std::cout << b << std::endl;
+
     std::cout << "b[1] = " << b[1] << std::endl;
     std::cout << "Tring to access b[13] = " << b[13] << std::endl;
 
