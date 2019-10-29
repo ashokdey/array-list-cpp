@@ -1,6 +1,6 @@
 #include <iostream>
-#include "ArrayList.hpp"
-#include "IndexException.cc"
+#include "../headers/ArrayList.hpp"
+#include "IndexException.cpp"
 
 template <typename T>
 ArrayList<T>::ArrayList(int size)
