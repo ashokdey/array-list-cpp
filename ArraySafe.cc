@@ -25,6 +25,17 @@ IntArray::IntArray(const IntArray &source)
   }
 }
 
+IntArray::IntArray(IntArray &&source)
+{
+  // transfer owenership from the source
+  m_size = source.m_size;
+  m_ptr = source.m_ptr;
+
+  // clear the cource
+  source.m_ptr = nullptr;
+  source.m_size = 0;
+}
+
 IntArray::~IntArray()
 {
   delete[] m_ptr;

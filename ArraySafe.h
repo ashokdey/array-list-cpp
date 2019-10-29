@@ -11,6 +11,9 @@ public:
   // the copy constructor
   IntArray(const IntArray &source);
 
+  // the move constructor
+  IntArray(IntArray &&source);
+
   // the destructor to free memory
   ~IntArray();
 
