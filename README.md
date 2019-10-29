@@ -1,6 +1,6 @@
 # ArrayList Class in C++
 
-**Minimal implementation** of a bound safe array class with all the modern C++ contructs
+**Minimal implementation** of a bound safe array class with all the modern C++ constructs
 
 ## Motivation
 
